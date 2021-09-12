@@ -1,0 +1,7 @@
+{
+  "name": "TuHogarOnline",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
