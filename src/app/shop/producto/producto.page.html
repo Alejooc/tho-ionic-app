@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar *ngIf="product">
+    <ion-buttons slot="start" [routerLink]="['/shop/category/',product.categoryslug]">
+      <ion-button >
+        <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button >
+        <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+
+      </ion-button>
+      <ion-button >
+        <ion-icon slot="icon-only" name="bag-outline"></ion-icon>
+      </ion-button>
+      
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="product" id="main-content">
+  <ion-grid>
+    <ion-col>
+      <ion-text class="nameprod">
+        <h5 >{{product.name}}</h5>
+      </ion-text>
+    </ion-col>
+  </ion-grid>
+  <app-sliderimg [imgs]="imgsData" [etiqueta]="product.etiqueta" [imgpromo]="product.superpromo" ></app-sliderimg>
+  
+  <ion-grid>
+    
+    <ion-col>
+      <ion-text  class="prices">
+        <h5> 
+          <ion-text class="promoPrice">{{this.prodProps[0].price2 | currency:'COP':'symbol-narrow':'3.0'}}</ion-text>
+        </h5>
+        <h5> 
+          <ion-text class="p1">{{this.prodProps[0].price | currency:'COP':'symbol-narrow':'3.0'}}</ion-text>
+        </h5>
+        <h5>Codigo: {{this.prodProps[0].sku}}</h5>
+      </ion-text>
+      <ion-item-divider>
+      </ion-item-divider>
+      <ion-item>
+        <ion-icon name="remove" (click)="decrement()"></ion-icon>
+          
+          <ion-input type="number" style="text-align: center;" value="{{currentNumber}}"></ion-input>
+      
+          <ion-icon name="add" (click)="increment()"></ion-icon>
+      </ion-item>
+      <ion-item-divider>
+      </ion-item-divider>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle class="espec">Especificaciónes</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ol>
+            <li type="circle" class="especli" *ngFor="let espec of product.spec"><ion-text color="dark" class="espec">{{espec.name}}:</ion-text> {{espec.name1}}</li>
+          </ol>
+        </ion-card-content>
+      </ion-card>
+      
+    </ion-col>
+    
+    
+  </ion-grid>
+  <ion-item button  (click)="openCustom()">
+    <ion-label>
+      Informacion del producto
+    </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+</ion-content>
+
+<div class="btn-addcart">
+  <ion-button expand="block" slot="start" (click)="presentToast()">AGREGAR A LA BOLSA</ion-button>
+
+</div>
+
+<ion-menu side="start" menuId="custom" contentId="main-content" class="my-custom-menu" swipeGesture="false">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start" (click)="close()">
+      <ion-button >
+        <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+      <ion-title>Custom Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    
+  </ion-content>
+</ion-menu>

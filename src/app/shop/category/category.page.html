@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="backcategory()">
+      <ion-button >
+        <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+      </ion-button>
+      
+    </ion-buttons>
+    <ion-title>{{titlepag}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+  <ion-segment value="all">
+    <ion-segment-button value="ordenar" layout="icon-start">
+      <ion-label>Ordenar</ion-label>
+      <ion-icon name="swap-vertical-outline" ></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="filtrar" layout="icon-start">
+      <ion-label>Filtrar</ion-label>
+      <ion-icon name="funnel-outline"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+<ion-content>
+  
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+  <ion-grid>
+    <ion-row>
+      <ng-template  [ngIf]="products">
+        <ion-col size="6" *ngFor="let prod of products" (click)="goToProduct(prod.slug)">
+          <ion-card >
+            <ion-badge class="badgeEtiqueta" [ngClass]="{'promo': prod.etiqueta == 'PROMOCIÓN', 'pocas' : prod.etiqueta == 'POCAS UNIDADES'}">{{prod.etiqueta}}</ion-badge>
+            <ion-img [src]="'https://tuhogaronline.com/backTHO/images1/thumb512/'+prod.img[0].url" alt="{{prod.img[0].title}}"></ion-img>
+            <ion-img  class="promoimg" [src]="'https://tuhogaronline.com/backTHO/img/promo/'+prod.superpromo+'.png'" alt="{{prod.img[0].title}}" *ngIf="prod.superpromo > 0"></ion-img>
+            <ion-card-content>
+              <ion-text class="nameprod">
+                <h5>{{shortname(prod.name)}}</h5>
+              </ion-text>
+              <ion-text color="dark" class="extra">
+                <h5 class="">{{prod.material}} - {{prod.measure}}</h5>
+              </ion-text>
+              <ion-text color="dark" class="prices">
+               
+                <h5 class="promoPrice" *ngIf="prod.pricepromo > 0">Hoy: {{prod.pricepromo | currency:'COP':'symbol-narrow':'3.0'}}
+                  <ion-badge color="danger" slot="end" class="dcto">{{caldcto([prod.price2,prod.price,prod.promo])}}% </ion-badge></h5>
+                <h5 class="promoPrice" *ngIf="prod.pricepromo == 0">Ahora: {{prod.price2 | currency:'COP':'symbol-narrow':'3.0'}} <ion-badge color="danger" slot="end" class="dcto">{{caldcto([prod.price2,prod.price])}}% </ion-badge></h5>
+                
+                <h5 class="p2" *ngIf="prod.pricepromo > 0">{{prod.price2 | currency:'COP':'symbol-narrow':'3.0'}} <ion-badge color="medium" class="dcto" slot="end">{{caldcto([prod.price2,prod.price])}}% </ion-badge></h5>
+                <h5 class="p1">{{prod.price | currency:'COP':'symbol-narrow':'3.0'}} </h5>
+              </ion-text>
+            </ion-card-content>
+            
+          </ion-card>
+        </ion-col>
+      </ng-template>
+      <ng-template  [ngIf]="reload">
+        <ion-col size="6" *ngFor="let noprod of noproducts">
+          <ion-card >
+            <ion-badge style="width: 50%" class="badgeEtiqueta"><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></ion-badge>
+            <ion-img [src]="'https://iaichile.org/wp-content/themes/iaichile/img/noimage.png'"></ion-img>
+            <ion-card-content>
+              <ion-text class="nameprod">
+                <h5><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h5>
+              </ion-text>
+              <ion-text color="dark" class="extra">
+                <h5 class=""><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h5>
+              </ion-text>
+              <ion-text color="dark" class="prices">
+                <h5 class="promoPrice"><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h5>
+                <h5 class="promoPrice" ><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h5>
+                <h5 class="p2" ><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h5>
+                <h5 class="p1"><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h5>
+              </ion-text>
+            </ion-card-content>
+            
+          </ion-card>
+        </ion-col>
+      </ng-template>
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-row>
+  </ion-grid>
+</ion-content>

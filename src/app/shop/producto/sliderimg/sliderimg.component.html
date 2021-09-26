@@ -1,0 +1,10 @@
+
+<ion-slides pager="true" [options]="slideOpts">
+  
+  <ion-slide *ngFor="let img of imgs">
+    <ion-badge class="badgeEtiqueta" [ngClass]="{'promo': etiqueta == 'PROMOCIÓN', 'pocas' : etiqueta == 'POCAS UNIDADES','nuevo' : etiqueta == 'NUEVO'}">{{etiqueta}}</ion-badge>
+    <ion-img [src]="'https://tuhogaronline.com/backTHO/images1/'+img.url"></ion-img>
+    <ion-img  class="promoimg" [src]="'https://tuhogaronline.com/backTHO/img/promo/'+imgpromo+'.png'"  *ngIf="imgpromo > 0"></ion-img>
+
+  </ion-slide>
+</ion-slides>

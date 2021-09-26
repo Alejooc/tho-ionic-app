@@ -1,12 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RestService } from "../rest/rest.service";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  constructor() {}
+  constructor(private rest:RestService) {}
 
+  bannersData=[];
+  dosimg=[];
+  home2=[];
+
+  ngOnInit() {
+    this.rest.getHome().subscribe(resp=>{
+      console.log(resp);
+      this.bannersData= resp.body.bannerppal // noticias home
+      this.home2 = resp.body.home2; // more options home
+      this.dosimg = this.home2[0]; // dos imagenes banners
+    })
+  }
 }

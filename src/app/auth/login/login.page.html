@@ -1,0 +1,29 @@
+<ion-toolbar>
+  <ion-buttons slot="primary" (click)="dismiss()">
+    <ion-button>
+      <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content>
+  <ion-grid>
+      <ion-col>
+        <form action="">
+          <ion-item>
+            <ion-label position="stacked">Stacked Label</ion-label>
+            <ion-input clearInput placeholder="Ingresa tu numero de telefono"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" >Stacked Label</ion-label>
+            <ion-input clearInput placeholder="Ingresa tu contraseña"></ion-input>
+          </ion-item>
+          <ion-text color="dark">
+            <a href="">Olvidaste tu contraseña?</a>
+          </ion-text>          
+          <ion-button expand="full">Iniciar Sesion</ion-button>
+        </form>
+       
+
+      </ion-col>
+  </ion-grid>
+</ion-content>
