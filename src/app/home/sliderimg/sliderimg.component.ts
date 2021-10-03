@@ -7,9 +7,7 @@ import { Component, OnInit,Input  } from '@angular/core';
 })
 export class SliderimgComponent implements OnInit {
   slideOpts = {
-    initialSlide: 1,
-    slidesPerView: 1.5,
-    spaceBetween: 5,
+    initialSlide: 0,
     speed: 400,
     loop: true,
     centeredSlides: true,

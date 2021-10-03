@@ -12,7 +12,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'shop',
+    path: 'tienda',
     loadChildren: () => import('./shop/shop.module').then( m => m.ShopPageModule)
   },
   {

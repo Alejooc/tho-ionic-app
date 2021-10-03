@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: PromoPage
+  },
+  {
+    path: ':slug',
+    component: PromoPage
+  },
+  {
+    path: ':slug/:category',
+    component: PromoPage
   }
 ];
 

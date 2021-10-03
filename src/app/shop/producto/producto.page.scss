@@ -2,16 +2,24 @@ h5{
     margin: 6px!important;
 }
 .my-custom-menu {
-    --width: 500px;
+    --width: 100vw;
   }
+.cantitems{
+    position: absolute;
+    z-index: 1;
+    border-radius: 20px;
+    top: -4px;
+    right: -5px;
+}
 .btn-addcart{
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 18px;
     ion-button{
-        --background:rgb(25, 145, 25);
+        --background:#00c851;
         --padding-top:23px; 
         --padding-bottom: 23px;
+        --border-radius:25px;
     }
 }
 ion-grid{

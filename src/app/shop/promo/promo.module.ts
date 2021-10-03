@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PromoPageRoutingModule } from './promo-routing.module';
 
 import { PromoPage } from './promo.page';
+import {  CategoriesComponent} from "./categories/categories.component";
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { PromoPage } from './promo.page';
     IonicModule,
     PromoPageRoutingModule
   ],
-  declarations: [PromoPage]
+  declarations: [PromoPage,CategoriesComponent]
 })
 export class PromoPageModule {}

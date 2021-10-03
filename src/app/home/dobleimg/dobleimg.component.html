@@ -1,4 +1,4 @@
-<ion-card *ngFor="let banner of dosimages.detail">
+<ion-card *ngFor="let banner of dosimages" [routerLink]="['/tienda/category/',convertURL(banner.url)]">
   
     <ion-img [src]="'https://tuhogaronline.com/backTHO/img/home/'+banner.img" alt="{{banner.alt}}"></ion-img>
  

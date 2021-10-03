@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *ngIf="!noprods">
   <ion-toolbar>
     <ion-buttons slot="start" (click)="backcategory()">
       <ion-button >
@@ -7,9 +7,17 @@
       
     </ion-buttons>
     <ion-title>{{titlepag}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button >
+        <ion-icon  slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="['/tienda/cart']" >
+        <ion-icon slot="icon-only" name="bag-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-  <ion-segment value="all">
+  <ion-segment value="all" *ngIf="!noprods">
     <ion-segment-button value="ordenar" layout="icon-start">
       <ion-label>Ordenar</ion-label>
       <ion-icon name="swap-vertical-outline" ></ion-icon>
@@ -76,10 +84,23 @@
           </ion-card>
         </ion-col>
       </ng-template>
+      <ng-template  [ngIf]="noprods">
+        <ion-col>
+          <ion-card >
+              <ion-img [src]="'/assets/images/nodata.svg'" class="nodataimg"></ion-img>
+            <ion-card-content>
+              <ion-text class="nodatatxt">
+                <h5>!Oh No¡ Sin resultados...</h5>
+              </ion-text>
+            </ion-card-content>
+            <app-related [cat]="'cubrelechos'"></app-related>
+          </ion-card>
+        </ion-col>
+      </ng-template>
       <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
         <ion-infinite-scroll-content
           loadingSpinner="bubbles"
-          loadingText="Loading more data...">
+          loadingText="Cargando...">
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
     </ion-row>

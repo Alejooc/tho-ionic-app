@@ -1,17 +1,18 @@
 <ion-header>
   <ion-toolbar *ngIf="product">
-    <ion-buttons slot="start" [routerLink]="['/shop/category/',product.categoryslug]">
+    <ion-buttons slot="start" [routerLink]="['/tienda/category/',product.categoryslug]">
       <ion-button >
         <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button >
+      <ion-button (click)="openshare()">
         <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
 
       </ion-button>
-      <ion-button >
-        <ion-icon slot="icon-only" name="bag-outline"></ion-icon>
+      <ion-button [routerLink]="['/tienda/cart']">
+        <ion-badge class="cantitems" color="success">{{cantItems}}</ion-badge>
+        <ion-icon  slot="icon-only" name="bag-outline"></ion-icon>
       </ion-button>
       
 
@@ -69,16 +70,21 @@
     
   </ion-grid>
   <ion-item button  (click)="openCustom()">
-    <ion-label>
+    <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+    <ion-label >
       Informacion del producto
     </ion-label>
     <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
   </ion-item>
-
+<ion-grid>
+  <ion-col>
+    <app-related [cat]="product.categoryslug" *ngIf="product"></app-related>
+  </ion-col>
+</ion-grid>
 </ion-content>
 
 <div class="btn-addcart">
-  <ion-button expand="block" slot="start" (click)="presentToast()">AGREGAR A LA BOLSA</ion-button>
+  <ion-button expand="block" slot="start" (click)="test()">AGREGAR A LA BOLSA</ion-button>
 
 </div>
 
@@ -90,11 +96,20 @@
         <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
       </ion-button>
     </ion-buttons>
-
-      <ion-title>Custom Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
+    <ion-grid> 
+      <ion-col *ngIf="product">
+        <ion-text color="dark" >
+          <h5>{{product.desc}}</h5>
+          <p>{{product.desl}}</p>
+        </ion-text>
+        <ol>
+          <li type="circle" class="especli" *ngFor="let espec of product.spec"><ion-text color="dark" class="espec">{{espec.name}}:</ion-text> {{espec.name1}}</li>
+        </ol>
+      </ion-col>
+    </ion-grid>
     
   </ion-content>
 </ion-menu>

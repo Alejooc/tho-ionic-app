@@ -1,7 +1,16 @@
 ion-segment-button{
     text-transform:unset!important
 }
-
+ion-header{
+    ion-toolbar{
+      --color:white;
+      ion-icon{
+        font-weight: bold;
+        font-size: 29px;
+      }
+      --background:#00b6c7;
+    }
+  }
 ion-col{
     padding-inline-start:0px;
     padding-inline-end:0px;
@@ -13,6 +22,20 @@ ion-col{
         margin-inline:0px!important;
         box-shadow: rgb(0 0 0 / 20%) 0px 1px 1px -9px, rgb(0 0 0 / 5%) 0px 0px 0px 0px, rgb(0 0 0 / 5%) 0px 0px 0px 0px;
         border-radius: 0px;
+        .nodataimg{
+            width: 65%;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .nodatatxt{
+            text-align: center;
+            h5{
+                font-size: 18px;
+            }
+            
+        }
+        
         .promoimg{
             z-index: 1;
             position: absolute;

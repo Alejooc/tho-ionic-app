@@ -27,4 +27,24 @@
 
 #container a {
   text-decoration: none;
+
+}
+ion-header{
+  ion-toolbar{
+    --color:white;
+    ion-menu-button{
+      font-size: 29px;
+    }
+    ion-icon{
+      font-weight: bold;
+      font-size: 29px;
+
+    }
+    --background:#00b6c7;
+    ion-searchbar{
+      --box-shadow:unset;
+      --border-radius:25px;
+      --placeholder-font-weight:300;
+    }
+  }
 }

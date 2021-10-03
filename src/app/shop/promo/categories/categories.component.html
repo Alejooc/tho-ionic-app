@@ -1,0 +1,21 @@
+<!--<ion-card class="headcard">
+  <ion-col>
+    <h5 class="title">Categorias</h5>
+    <span class="sub">Lo que tenemos para ti</span>
+  </ion-col>
+</ion-card>!-->
+
+<ion-slides  [options]="slideOpts" >
+    <ion-slide *ngFor="let category of categories" [routerLink]="['/tienda/promo/',promo,category.slug]" class="related-item">
+    <ion-card>
+      <ion-img  [src]="'https://tuhogaronline.com/backTHO/img/landing/Web-5.png'" alt="" ></ion-img>
+      <ion-card-content>
+        <ion-text class="nameprod">
+          <h5>{{category.name}}</h5>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </ion-slide>
+</ion-slides>
+
+

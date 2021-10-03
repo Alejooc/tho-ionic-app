@@ -2,9 +2,13 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-    </ion-buttons> 
-    <ion-searchbar animated></ion-searchbar>
-    <ion-icon name="bag-outline"></ion-icon>
+    </ion-buttons>
+    <ion-searchbar animated  placeholder="Buscar en TuhogarOnline"></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/tienda/cart']">
+        <ion-icon slot="icon-only" name="bag-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -15,16 +19,27 @@
 
     </ion-toolbar>
   </ion-header>
+
+  <app-sliderimg [banners]="bannersData"></app-sliderimg>
+  
   <ion-grid>
-    <ion-col>
-      <app-loginregister></app-loginregister>
+    <ion-col *ngFor="let home of home2">
+      <ng-template [ngIf]="home.type == 1">
+        <app-unaimg [imgdata]="home.detail"></app-unaimg>
+      </ng-template>
+      <ng-template [ngIf]="home.type == 3">
+       <app-cuatroimg ></app-cuatroimg>
+      </ng-template>
+      <ng-template [ngIf]="home.type == 5">
+        <app-dobleimg [dosimages]="home.detail"></app-dobleimg>
+      </ng-template>
+      <ng-template [ngIf]="home.type == 12">
+        <app-newsprods [categories]="navcate"></app-newsprods>
+      </ng-template>
+      <ng-template [ngIf]="home.type == 16">
+        {{home.title}}
+      </ng-template>
     </ion-col>
-      <ion-col>
-        <app-sliderimg [banners]="bannersData"></app-sliderimg>
-      </ion-col>
-      <ion-col>
-        <app-dobleimg [dosimages]="dosimg"></app-dobleimg>
-      </ion-col>
   </ion-grid>
 
 </ion-content>

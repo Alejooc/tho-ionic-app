@@ -5,7 +5,8 @@ import { RestService} from "./rest/rest.service";
 import { ParamMap, Router, ActivatedRoute,NavigationEnd } from '@angular/router';
 import { TabstateService } from "./tabstate.service";
 import {filter} from 'rxjs/operators';
-
+import lang from "./languages/es.json";
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import {filter} from 'rxjs/operators';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-
+  t=lang.lang;
   titlemenu="Categorias";
   categories;
   subcategorias;
@@ -23,7 +24,8 @@ export class AppComponent {
     private rest:RestService,
     private router: Router,
     private rutaActiva: ActivatedRoute,
-    public tabstateService:TabstateService) {
+    public tabstateService:TabstateService,
+    private statusBar: StatusBar) {
 
     this.loadMenu();
     //router.events.subscribe((url:any) => console.log(url));
@@ -31,20 +33,29 @@ export class AppComponent {
       filter(event => event instanceof NavigationEnd)
   )
       .subscribe(event => {
-          console.log(event);
           let url = event['url'].split('/')
-          if (url[2] != 'producto') {
+          console.log('tabs url',url);
+          
+          if (url[2] != 'producto' && url[2] != 'cart') {
             this.tabstateService.setState('producto',true)
           }else{
             this.tabstateService.setState('producto',false)
           }          
       });
-    
+    // set status bar color
+    this.statusBar.backgroundColorByHexString('#00b6c7');
   }
   
+  
   validmenu(e,url){
+    const ur = url.split('/');
     if (e==1) {
-      this.router.navigate(['shop/category',this.convertURL(url)]);
+      
+      if (ur[1] == 'promo') {
+        this.router.navigate(['tienda/promo',this.convertURL(url)]);
+      }else{
+        this.router.navigate(['tienda/category',this.convertURL(url)]);
+      }
       this.menu.close('menua');
     }
   }

@@ -26,6 +26,7 @@ export class CategoryPage implements OnInit {
   titlepag="Categoria";
   pagina=0;
   totalpags=0;
+  noprods=false;
   slug=this.rutaActiva.snapshot.params.slug;
 
   constructor(public tabstateService:TabstateService,private rest:RestService,private appcon:AppComponent,private rutaActiva: ActivatedRoute,private router:Router) { }
@@ -103,10 +104,17 @@ export class CategoryPage implements OnInit {
   getProducts(){
     this.rest.getProductsCategory('[]',this.slug,undefined,this.pagina,undefined,"",undefined,"").subscribe(resp=>{
       console.log(resp);
-      this.products=[...resp.prods!];
-      this.titlepag =resp.cat.name;
-      this.totalprods = parseInt(resp.total);
-      this.totalpags=parseInt(resp.pagin);
+      if (resp.total != '0') {
+          this.products=[...resp.prods!];
+          this.titlepag =resp.cat.name;
+          this.totalprods = parseInt(resp.total);
+          this.totalpags=parseInt(resp.pagin);
+      }else{
+        console.log('nada');
+        this.titlepag =resp.cat.name;
+        this.noprods=true;
+      }
+      
 
     })
   }
@@ -130,7 +138,7 @@ export class CategoryPage implements OnInit {
   }
 
   goToProduct(slug){
-    this.router.navigate(['shop/producto/',slug]);
+    this.router.navigate(['tienda/producto/',slug]);
 
   }
 }

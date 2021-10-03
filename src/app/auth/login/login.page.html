@@ -1,5 +1,5 @@
 <ion-toolbar>
-  <ion-buttons slot="primary" (click)="dismiss()">
+  <ion-buttons slot="primary">
     <ion-button>
       <ion-icon slot="end" name="close-circle-outline"></ion-icon>
     </ion-button>
@@ -8,19 +8,25 @@
 <ion-content>
   <ion-grid>
       <ion-col>
-        <form action="">
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
           <ion-item>
-            <ion-label position="stacked">Stacked Label</ion-label>
-            <ion-input clearInput placeholder="Ingresa tu numero de telefono"></ion-input>
+            <ion-label position="stacked">Usuario</ion-label>
+            <ion-input clearInput placeholder="Ingresa tu numero de telefono" formControlName="user" [ngClass]="{'is-invalid':form.user.errors}"></ion-input>
+            <div *ngIf="form.user.errors">
+              <div *ngIf="form.user.errors.required">Este campo es obligatorio</div>
+            </div>
           </ion-item>
           <ion-item>
-            <ion-label position="stacked" >Stacked Label</ion-label>
-            <ion-input clearInput placeholder="Ingresa tu contraseña"></ion-input>
+            <ion-label position="stacked" >Contraseña</ion-label>
+            <ion-input type="password" clearInput placeholder="Ingresa tu contraseña"  formControlName="pass"></ion-input>
+            <div *ngIf="form.pass.errors"> 
+              <div *ngIf="form.pass.errors.required">Este campo es obligatorio</div>
+            </div>
           </ion-item>
           <ion-text color="dark">
             <a href="">Olvidaste tu contraseña?</a>
           </ion-text>          
-          <ion-button expand="full">Iniciar Sesion</ion-button>
+          <ion-button expand="full" [disabled]="loginForm.invalid">Iniciar Sesion</ion-button>
         </form>
        
 

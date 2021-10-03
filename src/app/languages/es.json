@@ -1,0 +1,22 @@
+{
+    "lang":{
+        "tabs":{
+            "tab_inicio":"Inicio",
+            "tab_misCompras":"Mis Compras",
+            "tab_notificaciones":"Notificaciones",
+            "tab_miPerfil":"Mi perfil" 
+        },
+        "home":{
+    
+        },
+        "category":{
+            "t_ordenar":"Ordernar",
+            "t_filtrar":"Filtrar"
+        },
+        "product":{
+            "t_btnbuy":"AGREGAR A LA BOLSA",
+            "t_especificaciones":"Especificaciónes",
+            "t_infoProduct":"Informacion del producto"
+        }
+    }   
+}

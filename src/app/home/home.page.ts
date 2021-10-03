@@ -13,13 +13,15 @@ export class HomePage implements OnInit {
   bannersData=[];
   dosimg=[];
   home2=[];
-
+  navcate=[]
   ngOnInit() {
     this.rest.getHome().subscribe(resp=>{
       console.log(resp);
       this.bannersData= resp.body.bannerppal // noticias home
       this.home2 = resp.body.home2; // more options home
       this.dosimg = this.home2[0]; // dos imagenes banners
+      this.navcate= resp.body.navcate;
+
     })
   }
 }

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" [routerLink]="['/home']">
+      <ion-button >
+        <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+      </ion-button>
+      
+    </ion-buttons>
+    <ion-title>Carrito de compras</ion-title>
+    <ion-buttons slot="end">
+      <ion-button >
+        <ion-icon slot="icon-only" name="help-buoy-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let prod of cart; let i = index;" [routerLink]="['/tienda/producto',prod.slug]">
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="https://tuhogaronline.com/backTHO/images1/thumb512/{{prod.imgUrl}}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{prod.nombre}}</h2>
+        <p>{{prod.sku}}</p>
+      </ion-label>
+      <ion-button fill="outline" slot="end" (click)="removeItem(i)">Borrar</ion-button>
+    </ion-item>
+  </ion-card>
+  
+
+</ion-content>
+<div class="btn-addcart">
+  <ion-item>
+    <ion-icon name="ticket" size="small" slot="start"></ion-icon>
+    <ion-label position="fixed">Cupon:</ion-label>
+    <ion-input placeholder="Enter cupon code"></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col size="6">
+      <ion-text color="dark">
+        <h5> SubTotal:99999</h5>
+      </ion-text>
+      
+    </ion-col>
+    <ion-col size="6" class="btn-cont">
+      <ion-button expand="full">
+        Continuar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</div>
