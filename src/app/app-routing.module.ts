@@ -23,6 +23,18 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./user/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./user/notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
+    path: 'buy-record',
+    loadChildren: () => import('./user/buy-record/buy-record.module').then( m => m.BuyRecordPageModule)
+  },
 
 ];
 

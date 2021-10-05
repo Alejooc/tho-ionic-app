@@ -1,0 +1,35 @@
+ion-header{
+    ion-toolbar{
+        --color:rgb(255, 255, 255);
+        ion-icon{
+          font-weight: bold;
+          font-size: 29px;
+        }
+        --background:rgb(0, 182, 199);
+        
+      }
+}
+.header-md::after{
+    background-image: unset;
+   
+}
+.userinfo{
+    margin-inline:unset; 
+    box-shadow: unset;
+    --background:#00b6c7!important;
+    border-radius:0px;
+    margin: unset;
+    ion-item{
+        --background:#00b6c7!important;
+        ion-avatar{
+            margin-inline-end:0px;
+        }
+        
+    }
+    ion-card-subtitle{
+        --color: white!important;
+    }
+    ion-card-title {
+        --color: white!important;
+    }
+}

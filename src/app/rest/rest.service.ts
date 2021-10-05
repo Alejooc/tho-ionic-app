@@ -86,4 +86,9 @@ export class RestService {
     return this.http.get(this.url+'storemain/products_related/slug/'+slug,{ observe: 'response' });
   }
 
+  //get user data by user ID
+  getUserData(id:string,id2:string,type:Number):Observable<any>{
+    return this.http.get(this.url+"storeclient/data/id/"+id+"/id2/"+id2+"/type/"+type,{ observe: 'response' });
+  }
+
 }

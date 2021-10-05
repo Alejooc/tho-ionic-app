@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from "../auth.service";
 import { ToastController } from '@ionic/angular';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,8 @@ export class LoginPage implements OnInit {
 
   loginForm:FormGroup
   submitted=false;
-  
-  
-  constructor(private auth:AuthService,public toastController: ToastController,private formBuilder:FormBuilder) {
+
+  constructor(private router:Router,private auth:AuthService,public toastController: ToastController,private formBuilder:FormBuilder,private route:ActivatedRoute) {
    }
 
  ngOnInit() {
@@ -36,6 +36,8 @@ export class LoginPage implements OnInit {
     return this.loginForm.controls;
   }
   onSubmit(){
+    console.log('uuuu');
+    
     this.submitted=true;
     if (this.loginForm.invalid) {
       this.presentToast('verifica los datos');
@@ -46,6 +48,8 @@ export class LoginPage implements OnInit {
       if (resp.type > 0) {
         console.log(resp.msg);
         this.auth.addData({usr:resp.usr,curren:{username:resp.usr.id,token:resp.jwt}});
+        this.router.navigate([this.route.snapshot.params.ruta]);
+        
       }else{
         console.log(resp.msg);
       }

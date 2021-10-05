@@ -29,8 +29,15 @@ export class AuthService {
     this.storage.set(STORAGE_KEY2,item.curren)
     return true
   }
-  validate(){
-    return this.storage.get(STORAGE_KEY1)|| [];
+  // valida si los datos estan en STORAGE 
+  async validate(){
+    const data= await this.storage.get(STORAGE_KEY1)|| [];
+    console.log(data);
+    if (data.user) {
+      return true;
+    }else{
+      return false;
+    }
   }
 
   // Login POST REQ
