@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>buyRecord</ion-title>
+    <ion-title>Mis Compras</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card *ngFor="let item of data">
     <ion-card-header>
-      <ion-card-title>{{item.transactionDetail}}</ion-card-title>
+      <ion-card-title>{{shortname(item.transactionDetail)}}...</ion-card-title>
       <ion-card-subtitle>Orden: {{item.invoice}}</ion-card-subtitle>
 
       <ion-card-subtitle>Estado: {{item.status}}</ion-card-subtitle>

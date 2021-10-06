@@ -16,7 +16,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let prod of cart; let i = index;" [routerLink]="['/tienda/producto',prod.slug]">
+  <ion-card *ngFor="let prod of cart; let i = index;">
     <ion-item>
       <ion-thumbnail slot="start">
         <img src="https://tuhogaronline.com/backTHO/images1/thumb512/{{prod.imgUrl}}">
@@ -24,27 +24,33 @@
       <ion-label>
         <h2>{{prod.nombre}}</h2>
         <p>{{prod.sku}}</p>
+        <p class="total">{{ total({p1:prod.price,p2:prod.price2,p3:prod.pricepromo}) | currency:'COP':'symbol-narrow':'3.0'}}</p>
+        <div class="quantity">
+          <a (click)="decrement()" class="quantity__minus"><span>-</span></a>
+          <input name="quantity" type="number" class="quantity__input" value="{{prod.cantidad}}">
+          <a  (click)="increment()" class="quantity__plus"><span>+</span></a>
+        </div>
       </ion-label>
+      
       <ion-button fill="outline" slot="end" (click)="removeItem(i)">Borrar</ion-button>
     </ion-item>
   </ion-card>
   
 
 </ion-content>
-<div class="btn-addcart">
+<div class="btn-addcart" *ngIf="cart.length">
   <ion-item>
     <ion-icon name="ticket" size="small" slot="start"></ion-icon>
     <ion-label position="fixed">Cupon:</ion-label>
     <ion-input placeholder="Enter cupon code"></ion-input>
   </ion-item>
   <ion-row>
-    <ion-col size="6">
+    <ion-col size="7">
       <ion-text color="dark">
-        <h5> SubTotal:99999</h5>
+        <h5> SubTotal: {{totalPay| currency:'COP':'symbol-narrow':'3.0'}}</h5>
       </ion-text>
-      
     </ion-col>
-    <ion-col size="6" class="btn-cont">
+    <ion-col size="5" class="btn-cont">
       <ion-button expand="full">
         Continuar
       </ion-button>

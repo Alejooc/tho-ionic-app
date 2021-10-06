@@ -39,11 +39,15 @@ export class AuthService {
       return false;
     }
   }
-
+  logout(){
+    this.storage.remove('UsrData');
+    this.storage.remove("currentUser")
+  }
   // Login POST REQ
   postLogin(data):Observable<any>{
     let _urlParams: any = new FormData();
     _urlParams.append('data', JSON.stringify(data));
     return this.http.post(this.url+'storeclient/login/',_urlParams);
   }
+
 }

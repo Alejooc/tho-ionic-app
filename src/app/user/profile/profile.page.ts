@@ -1,4 +1,3 @@
-import { getLocaleFirstDayOfWeek } from '@angular/common';
 import { Component, OnInit,ChangeDetectionStrategy,AfterViewInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import {  AuthService} from "../../auth/auth.service";
@@ -25,9 +24,12 @@ export class ProfilePage implements OnInit {
 
  
   ngOnInit() {
-    this.getUserInfo();  
+   
   }
-
+  logout(){
+   this.auth.logout();
+  this.router.navigate(['/home']);
+  }
   async getUserInfo(){
     const info = await this.auth.getData();    
     this.rest.getUserData(info.id,"0",1).subscribe(resp=>{
