@@ -1,13 +1,14 @@
-import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
-import { Component } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { Component,NgZone } from '@angular/core';
+import { MenuController, NavController } from '@ionic/angular';
 import { RestService} from "./rest/rest.service";
 import { ParamMap, Router, ActivatedRoute,NavigationEnd } from '@angular/router';
 import { TabstateService } from "./tabstate.service";
 import {filter} from 'rxjs/operators';
 import lang from "./languages/es.json";
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { ProductoPage } from "./shop/producto/producto.page";
+import {  PromoPage } from "./shop/promo/promo.page";
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -25,18 +26,36 @@ export class AppComponent {
     private router: Router,
     private rutaActiva: ActivatedRoute,
     public tabstateService:TabstateService,
-    private statusBar: StatusBar) {
-
+    private statusBar: StatusBar,
+    private deeplinks: Deeplinks,
+    public navController :NavController,
+    private zone: NgZone) {
+      this.deeplinks.route({
+        '/tienda/producto/:slug': ProductoPage,
+        '/tienda/promo/:slug': PromoPage
+      }).subscribe(match => {
+          // match.$route - the route we matched, which is the matched entry from the arguments to route()
+          // match.$args - the args passed in the link
+          // match.$link - the full link data
+          // Run the navigation in the Angular zone
+        this.zone.run(() => {
+          this.router.navigate([match.$link.path]);
+        });
+          console.log('Successfully matched route', match);
+        }, nomatch => {
+          // nomatch.$link - the full link data
+          console.error('Got a deeplink that didn\'t match', nomatch);
+        });
     this.loadMenu();
     //router.events.subscribe((url:any) => console.log(url));
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-  )
+      )
       .subscribe(event => {
           let url = event['url'].split('/')
           console.log('tabs url',url);
           
-          if (url[2] != 'producto' && url[2] != 'cart') {
+          if (url[2] != 'producto' && url[2] != 'cart'&& url[2] != 'search') {
             this.tabstateService.setState('producto',true)
           }else{
             this.tabstateService.setState('producto',false)

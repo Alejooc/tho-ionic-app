@@ -17,6 +17,10 @@ export class CartService {
   getData(){
     return this.storage.get(STORAGE_KEY)|| [];
   }
+  async getCantidad(){
+     let data = await this.storage.get(STORAGE_KEY)|| []
+    return await data.length;
+  }
   async getCantItems(){
     const cart = await this.storage.get(STORAGE_KEY)|| [];
     return cart.lenght;

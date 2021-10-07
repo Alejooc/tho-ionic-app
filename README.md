@@ -19,7 +19,7 @@ ThoAPP Es una Aplicacion hibrida, combina elementos de aplicaciones nativas y ap
 - Sistema landing page promo - ✔️ 95%.
 - Carrito -✔️ 50%
 - Filtros -❌ 0%
-- Buscador-❌  0%
+- Buscador- ✔️ 90%
 - Compartir (nativo) - ✔️ 95%
 - Mis compras- ✔️ 50% 
 - Apartado Notificaciones -❌  0%

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-button (click)="backPage()">
+        <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+      </ion-button>
+      
+    </ion-buttons>
+    <form  [formGroup]="searchForm">
+        <ion-input inputmode="search" autofocus="true" placeholder="Buscar en TuhogarOnline..." formControlName="txt"></ion-input>
+    </form>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card >
+    Categorias
+    <ion-card *ngFor="let data of resultDataC" [routerLink]="['/tienda/category',data.slug]" >
+      {{data.name}}
+    </ion-card>
+  </ion-card>
+  <ion-card >
+    Productos
+    <ion-card *ngFor="let data of resultDataP" [routerLink]="['/tienda/producto',data.slug]">
+      {{data.name}}
+    </ion-card>
+   
+  </ion-card>
+</ion-content>

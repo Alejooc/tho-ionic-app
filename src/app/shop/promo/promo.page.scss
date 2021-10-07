@@ -25,6 +25,18 @@ ion-header{
    
     ion-toolbar{
       --color:rgb(255, 255, 255);
+      .cantitems{
+            box-sizing: unset;
+            position: absolute;
+            font-size: 10px;
+            z-index: 1;
+            border-radius: 20px;
+            bottom: 12px;
+            right: 0px;
+            left: 12px;
+            background: white;
+            color: #00b6c7;
+        }
       ion-icon{
         font-weight: bold;
         font-size: 29px;

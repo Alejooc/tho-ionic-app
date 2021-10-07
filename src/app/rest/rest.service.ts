@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, retry } from 'rxjs/operators';
+import { catchError, map, retry, take } from 'rxjs/operators';
 import { Home } from '../interfaces/home';
 import { Categories } from '../interfaces/categories';
 
@@ -91,4 +91,37 @@ export class RestService {
     return this.http.get(this.url+"storeclient/data/id/"+id+"/id2/"+id2+"/type/"+type,{ observe: 'response' });
   }
 
+  //search Data 
+  SearchData(search:string):Observable<any>{
+    let _urlParams: any = new FormData();
+    _urlParams.append('txt', search);
+    _urlParams.append('tipo', 1);
+    return this.http.post(this.url+'storemain/Search/',_urlParams);
+  }
+  //url img to base64
+  imageUrlToBase64(urL: string):Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin':'*',
+      })
+    };
+    return this.http.get(urL, {
+        observe: 'body',
+        responseType: 'arraybuffer',
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin':'*',
+          'Content-Type': 'image/jpeg',
+        })
+      })
+      .pipe(
+        take(1),
+        map((arrayBuffer) =>
+          btoa(
+            Array.from(new Uint8Array(arrayBuffer))
+            .map((b) => String.fromCharCode(b))
+            .join('')
+          )
+        ),
+      )
+  }
 }

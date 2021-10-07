@@ -4,6 +4,7 @@ import { AppComponent } from "../../app.component";
 import { IonInfiniteScroll } from '@ionic/angular';
 import { ParamMap, Router, ActivatedRoute } from '@angular/router';
 import { TabstateService } from "../../tabstate.service";
+import { CartService } from "../../shop/cart.service";
 
 
 @Component({
@@ -28,8 +29,14 @@ export class CategoryPage implements OnInit {
   totalpags=0;
   noprods=false;
   slug=this.rutaActiva.snapshot.params.slug;
+  cartCant;
 
-  constructor(public tabstateService:TabstateService,private rest:RestService,private appcon:AppComponent,private rutaActiva: ActivatedRoute,private router:Router) { }
+  constructor(route:ActivatedRoute,private cart:CartService,public tabstateService:TabstateService,private rest:RestService,private appcon:AppComponent,private rutaActiva: ActivatedRoute,private router:Router) { 
+    route.params.subscribe(async val => {
+
+      this.cartCant= await  this.cart.getCantidad();
+    });
+  }
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 

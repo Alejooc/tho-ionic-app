@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+
 import { Storage } from "@ionic/storage-angular";
 
 @NgModule({
@@ -17,7 +19,7 @@ import { Storage } from "@ionic/storage-angular";
   IonicStorageModule.forRoot({
     name:"mydb"
   })],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },StatusBar,Storage],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },StatusBar,Storage,Deeplinks],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

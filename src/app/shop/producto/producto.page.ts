@@ -5,6 +5,7 @@ import { MenuController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { CartService } from "../cart.service";
+import { Base64 } from '@ionic-native/base64/ngx';
 
 @Component({
   selector: 'app-producto',
@@ -28,7 +29,8 @@ export class ProductoPage implements OnInit {
     private rutaActiva: ActivatedRoute,
     private menu:MenuController,
     private router:Router,
-    private cartService:CartService
+    private cartService:CartService,
+    private base64: Base64
     ) {
       this.loadData();
      }
@@ -72,13 +74,19 @@ export class ProductoPage implements OnInit {
   
 
   openshare(){
+    let filePath: string ='https://tuhogaronline.com/backTHO/images1/'+this.product.img[0].url;
+    let slugprod :string='https://tuhogaronline.com/tienda/producto/'+this.product.slug
+  
     let msg ="Me gustó este producto "+this.product.name+". ¡Lo quiero!";
-    this.socialSharing.share(msg).then(()=>{
+    this.socialSharing.share(msg,msg,filePath,slugprod).then(()=>{
       console.log('good');
       
     }).catch(()=>{
       console.log('nooooo');
-    })
+    })  
+    
+   
+    
   }
   async presentToast() {
     const toast = await this.toastController.create({

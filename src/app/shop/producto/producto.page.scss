@@ -4,12 +4,17 @@ h5{
 .my-custom-menu {
     --width: 100vw;
   }
-.cantitems{
+  .cantitems{
+    box-sizing: unset;
     position: absolute;
+    font-size: 10px;
     z-index: 1;
     border-radius: 20px;
-    top: -4px;
-    right: -5px;
+    bottom: 12px;
+    right: 0px;
+    left: 12px;
+    background: rgb(100, 100, 100);
+    color: #ffffff;
 }
 .btn-addcart{
     padding-left: 25px;

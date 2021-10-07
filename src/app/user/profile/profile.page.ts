@@ -2,6 +2,8 @@ import { Component, OnInit,ChangeDetectionStrategy,AfterViewInit } from '@angula
 import { ActivatedRoute,Router } from '@angular/router';
 import {  AuthService} from "../../auth/auth.service";
 import { RestService } from "../../rest/rest.service";
+import { CartService } from "../../shop/cart.service";
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -10,14 +12,16 @@ import { RestService } from "../../rest/rest.service";
 })
 export class ProfilePage implements OnInit {
   data:any;
+  cartCant;
 
-  constructor(private auth:AuthService,route:ActivatedRoute,private router:Router,private rest:RestService ) {
+  constructor(private auth:AuthService,route:ActivatedRoute,private cart:CartService,private router:Router,private rest:RestService ) {
     route.params.subscribe(async val => {
       if (await this.auth.validate() === false) {
         this.router.navigate(['/login','profile']);
         
       }
       this.getUserInfo(); 
+      this.cartCant= await  this.cart.getCantidad();
     });
      
     }

@@ -8,10 +8,12 @@
     </ion-buttons>
     <ion-title>{{titlepag}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button >
+      <ion-button [routerLink]="['/tienda/search','category',slug]" >
         <ion-icon  slot="icon-only" name="search"></ion-icon>
       </ion-button>
       <ion-button [routerLink]="['/tienda/cart']" >
+        <ion-badge class="cantitems" color="success">{{cartCant}}</ion-badge>
+
         <ion-icon slot="icon-only" name="bag-outline"></ion-icon>
       </ion-button>
     </ion-buttons>

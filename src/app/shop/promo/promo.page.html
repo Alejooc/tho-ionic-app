@@ -8,10 +8,11 @@
     </ion-buttons>
     <ion-title *ngIf="showHeader">{{titlepag}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button >
+      <ion-button [routerLink]="['/tienda/search','promo',slug]">
         <ion-icon  slot="icon-only" name="search"></ion-icon>
       </ion-button>
       <ion-button [routerLink]="['/tienda/cart']" >
+        <ion-badge class="cantitems" color="success">1</ion-badge>
         <ion-icon slot="icon-only" name="bag-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
