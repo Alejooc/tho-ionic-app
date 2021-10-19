@@ -9,8 +9,15 @@
     <ion-card-header>
       <ion-card-title>{{shortname(item.transactionDetail)}}...</ion-card-title>
       <ion-card-subtitle>Orden: {{item.invoice}}</ion-card-subtitle>
+      <ng-container *ngIf="item.guia && item.stateid==6; then second ; else first">
 
-      <ion-card-subtitle>Estado: {{item.status}}</ion-card-subtitle>
+      </ng-container>
+      <ng-template #first>
+        <ion-card-subtitle >Estado: {{item.status}}</ion-card-subtitle>
+      </ng-template>
+      <ng-template #second>
+        <ion-card-subtitle >testeando</ion-card-subtitle>
+      </ng-template>
 
     </ion-card-header>
   

@@ -9,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { ProductoPage } from "./shop/producto/producto.page";
 import {  PromoPage } from "./shop/promo/promo.page";
+import { AnalyticsFirebase } from '@ionic-native/analytics-firebase/ngx';
+import { ShipmentTrackingService } from "./plugins/shipmentTracking/shipment-tracking.service";
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -29,7 +31,20 @@ export class AppComponent {
     private statusBar: StatusBar,
     private deeplinks: Deeplinks,
     public navController :NavController,
-    private zone: NgZone) {
+    private zone: NgZone,
+    private analyticsFirebase: AnalyticsFirebase,
+    private ShipmentTrackingService:ShipmentTrackingService) {
+
+    /*this.ShipmentTrackingService.getDataShipmentEnvia().subscribe(resp=>{
+  
+      console.log(resp); 
+
+    });*/
+
+          this.analyticsFirebase.setCurrentScreen('Home')
+          .then(() => console.log('View successfully tracked'))
+          .catch(err => console.log('Error tracking view:', err));
+          
       this.deeplinks.route({
         '/tienda/producto/:slug': ProductoPage,
         '/tienda/promo/:slug': PromoPage
@@ -55,7 +70,7 @@ export class AppComponent {
           let url = event['url'].split('/')
           console.log('tabs url',url);
           
-          if (url[2] != 'producto' && url[2] != 'cart'&& url[2] != 'search') {
+          if (url[2] != 'producto' && url[2] != 'cart'&& url[2] != 'search'&& url[1] != 'login') {
             this.tabstateService.setState('producto',true)
           }else{
             this.tabstateService.setState('producto',false)
@@ -67,16 +82,20 @@ export class AppComponent {
   
   
   validmenu(e,url){
-    const ur = url.split('/');
-    if (e==1) {
-      
-      if (ur[1] == 'promo') {
-        this.router.navigate(['tienda/promo',this.convertURL(url)]);
-      }else{
-        this.router.navigate(['tienda/category',this.convertURL(url)]);
+    console.log(url);
+    if (url) {
+      const ur = url.split('/');
+      if (e==1) {
+        
+        if (ur[1] == 'promo') {
+          this.router.navigate(['tienda/promo',this.convertURL(url)]);
+        }else{
+          this.router.navigate(['tienda/category',this.convertURL(url)]);
+        }
+        this.menu.close('menua');
       }
-      this.menu.close('menua');
     }
+    
   }
 
 

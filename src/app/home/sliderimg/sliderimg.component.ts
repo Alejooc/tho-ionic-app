@@ -8,16 +8,14 @@ import { Component, OnInit,Input  } from '@angular/core';
 export class SliderimgComponent implements OnInit {
   slideOpts = {
     initialSlide: 0,
-    speed: 400,
+    speed: 700,
     loop: true,
     centeredSlides: true,
     autoplay: {
-      delay: 2000,
+      delay: 8000,
       disableOnInteraction: false,
-    },
-    pagination : {
-      el: '.swiper-pagination',
-      clickable: true
+      stopOnLastSlide: false
+
     }
 };
   @Input()

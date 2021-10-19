@@ -1,6 +1,24 @@
 <ion-card>
-    <ion-item>
-      <ion-button slot="start" color="primary" [routerDirection]="'root'" [routerLink]="'/login'">login</ion-button>
-      <ion-button slot="end" color="primary" [routerDirection]="'root'" [routerLink]="'/register'">Registro</ion-button>
+  <ion-card-header>
+    <ion-item lines="none">
+      <ion-buttons slot="start">
+        <ion-icon slot="icon-only" class="icon-user" name="person-circle-outline"></ion-icon>
+      </ion-buttons>
+      <ion-card-title>Ingresa con tu cuenta de TuhogarOnline.com</ion-card-title>
     </ion-item>
+   
+   
+  </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button class="btn-login"  expand="block" [routerDirection]="'root'" [routerLink]="['/login','home']">Iniciar Sesión</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button class="btn-registro" expand="block" [routerDirection]="'root'" [routerLink]="['/register','home']">Crear Cuenta</ion-button>
+        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
 </ion-card>

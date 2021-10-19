@@ -1,32 +1,49 @@
 <ion-toolbar>
   <ion-buttons slot="primary">
-    <ion-button>
-      <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+    <ion-button [routerDirection]="'root'" [routerLink]="['/home']">
+      <ion-icon slot="end" class="icon-back" name="close-circle-outline"></ion-icon>
     </ion-button>
   </ion-buttons>
 </ion-toolbar>
 <ion-content>
   <ion-grid>
       <ion-col>
+          <ion-img class="logo" [src]="'/assets/images/logo-login.png'"></ion-img>
+          <ion-item lines="none"> 
+            <ion-text class="olvpass" slot="start">
+              <h5>Inicia Sesión</h5>
+            </ion-text>  
+          </ion-item>
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-          <ion-item>
+          <ion-item lines="none">
             <ion-label position="stacked">Usuario</ion-label>
             <ion-input clearInput placeholder="Ingresa tu numero de telefono" formControlName="user" [ngClass]="{'is-invalid':form.user.errors}"></ion-input>
-            <div *ngIf="form.user.errors">
+            <!--<div *ngIf="form.user.errors">
               <div *ngIf="form.user.errors.required">Este campo es obligatorio</div>
-            </div>
+            </div>!-->
           </ion-item>
-          <ion-item>
+          <ion-item lines="none"> 
             <ion-label position="stacked" >Contraseña</ion-label>
-            <ion-input type="password" clearInput placeholder="Ingresa tu contraseña"  formControlName="pass"></ion-input>
-            <div *ngIf="form.pass.errors"> 
+            <ion-input type="password" placeholder="Ingresa tu contraseña"  formControlName="pass"></ion-input>
+           <!-- <div *ngIf="form.pass.errors"> 
               <div *ngIf="form.pass.errors.required">Este campo es obligatorio</div>
-            </div>
+            </div>!-->
           </ion-item>
-          <ion-text color="dark">
-            <a href="">Olvidaste tu contraseña?</a>
-          </ion-text>          
-          <ion-button type="submit" expand="full" [disabled]="loginForm.invalid" >Iniciar Sesion</ion-button>
+          <ion-item lines="none"> 
+            <ion-text class="olvpass" slot="end">
+              <a href="">Olvidaste tu contraseña? <ion-icon name="chevron-forward-outline"></ion-icon></a> 
+            </ion-text>  
+          </ion-item>
+          <ion-col > 
+            <ion-button type="submit" expand="block" class="btn-login" [disabled]="loginForm.invalid" >Iniciar Sesion</ion-button>
+            <ion-item-divider>
+              
+            </ion-item-divider>
+            <ion-text class="noaco">
+              <a [routerDirection]="'root'" [routerLink]="['/register','home']">¿No tienes cuenta? / Registrate</a> 
+            </ion-text>
+          </ion-col>  
+          
         </form>
        
 

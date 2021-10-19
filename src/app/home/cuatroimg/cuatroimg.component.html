@@ -1,3 +1,5 @@
-<p>
-  cuatroimg works!
-</p>
+<ion-card *ngFor="let banner of images" [routerLink]="['/tienda/category/',convertURL(banner.url)]">
+  
+  <ion-img [src]="'https://tuhogaronline.com/backTHO/img/home/'+banner.img" alt="{{banner.alt}}"></ion-img>
+
+</ion-card>

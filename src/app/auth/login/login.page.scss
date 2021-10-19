@@ -1,3 +1,48 @@
 .my-custom-class {
     --background: #222;
+}
+.logo{
+  width: 270px;
+  display: block;
+  margin: auto;
+  image-rendering: -webkit-optimize-contrast;
+  margin-bottom: 45px;
+}
+.icon-back{
+  font-size: 26px!important;
+}
+form{
+  .noaco{
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+    a{
+      text-decoration: none;
+      color: rgb(102, 102, 102);
+      font-size: 14px;
+    }
   }
+  .olvpass a{
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+    ion-icon{
+      font-size: 19px;
+    }
+  }
+  ion-input{
+    border: #eee solid 2px;
+    border-top: unset;
+    border-left: unset;
+    border-right: unset;
+  }
+  ion-col{
+    ion-button.btn-login{
+      margin-inline: 15px;
+      --background: #00b6c7;
+      --padding-top: 25px;
+      --padding-bottom: 25px;
+      font-size: 11px;
+    }
+    
+  }
+}

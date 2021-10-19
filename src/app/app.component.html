@@ -15,21 +15,21 @@
       <ion-content>
         <ion-list>
             <ng-template [ngIf]="submenu===false" [ngIfElse]="menu">
-              <ion-item button lines="none" *ngFor="let categorias of categories"  (click)="validmenu(categorias.urlt,categorias.url)">
+              <ion-item button lines="none" *ngFor="let categorias of categories"  (click)="validmenu(categorias.urlt,categorias.url);showsubcate(true,categorias.conf,categorias.conf[0].detail.id)">
                 <ng-template [ngIf]="categorias.type == 6" [ngIfElse]="othertype" >
-                    <ion-icon slot="start" [name]="'list'"></ion-icon>
-                    <ion-label class="label-menu" (click)="showsubcate(true,categorias.conf,categorias.conf[0].detail.id)" [ngStyle]="{'color' : categorias.color}">
+                  <ion-icon slot="start" class="iconlist" name="pricetags-outline"></ion-icon>
+                    <ion-label class="label-menu"  [ngStyle]="{'color' : categorias.color}">
                       {{categorias.name}}
                     </ion-label>
-                    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+                    <ion-icon slot="end" class="forward" name="chevron-forward-outline"></ion-icon>
                 </ng-template>
 
                 <ng-template #othertype>
-                  <ion-icon slot="start" [name]="'list'"></ion-icon>
+                  <ion-icon slot="start" class="iconlist" name="pricetags-outline"></ion-icon>
                   <ion-label class="label-menu" [ngStyle]="{'color' : categorias.color}">
                     {{categorias.name}}
                   </ion-label>
-                  <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+                  <ion-icon slot="end" class="forward" name="chevron-forward-outline"></ion-icon>
     
                  </ng-template>
                 
@@ -40,7 +40,7 @@
                   <ion-label class="label-menu">
                     {{subcategorias.nombre}}
                   </ion-label>
-                  <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+                  <ion-icon slot="end" class="forward" name="chevron-forward-outline"></ion-icon>
               </ion-item>
             </ng-template>
         </ion-list>

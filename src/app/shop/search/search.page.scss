@@ -1,3 +1,11 @@
 ion-card{
     box-shadow: unset;
+    .search{
+        display: block;
+        width: 200px;
+        margin: auto;
+    }
+    .text-nodata{
+        text-align: center;
+    }
 }

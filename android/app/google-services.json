@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "661446272769",
+    "project_id": "testapktho",
+    "storage_bucket": "testapktho.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661446272769:android:49dfa95fdf8ee913bc1d00",
+        "android_client_info": {
+          "package_name": "com.thonline.co"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661446272769-hrq2la9f3jf8srf78ngpp8jce1dovf6g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZGOU-MtMU8qJkf7CL_SxIKIN8MnB0zs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661446272769-hrq2la9f3jf8srf78ngpp8jce1dovf6g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

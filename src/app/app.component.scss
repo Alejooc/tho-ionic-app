@@ -1,7 +1,22 @@
 .my-custom-menu {
     --width: 500px;
   }
-
+.forward{
+  color: rgb(180, 180, 180);
+}
+.iconlist{
+  color: #00b6c7;
+  font-size: 20px!important;
+}
 .label-menu{
   font-weight: 500;
+  color: rgba(70, 70, 70, 0.933);
+}
+
+ion-tabs{
+  ion-tab-bar{
+    ion-tab-button{
+      --color-selected:#00b6c7;
+    }
+  }
 }

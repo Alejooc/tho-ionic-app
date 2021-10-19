@@ -1,4 +1,4 @@
-<ion-slides pager="true" [options]="slideOpts" >
+<ion-slides [options]="slideOpts" >
   <ion-slide *ngFor="let banner of banners" [routerLink]="['/'+banner.link]">
       <ion-img [src]="'https://tuhogaronline.com/backTHO/img/'+banner.url2" alt="{{banner.alt}}"></ion-img>
   </ion-slide>

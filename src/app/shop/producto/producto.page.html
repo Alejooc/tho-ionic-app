@@ -21,17 +21,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="product" id="main-content">
+  <app-sliderimg [imgs]="imgsData" [etiqueta]="product.etiqueta" [imgpromo]="product.superpromo" ></app-sliderimg>
   <ion-grid>
     <ion-col>
       <ion-text class="nameprod">
         <h5 >{{product.name}}</h5>
       </ion-text>
     </ion-col>
-  </ion-grid>
-  <app-sliderimg [imgs]="imgsData" [etiqueta]="product.etiqueta" [imgpromo]="product.superpromo" ></app-sliderimg>
-  
-  <ion-grid>
-    
     <ion-col>
       <ion-text  class="prices">
         <h5> 
@@ -44,13 +40,7 @@
       </ion-text>
       <ion-item-divider>
       </ion-item-divider>
-      <ion-item>
-        <ion-icon name="remove" (click)="decrement()"></ion-icon>
-          
-          <ion-input type="number" style="text-align: center;" value="{{currentNumber}}"></ion-input>
       
-          <ion-icon name="add" (click)="increment()"></ion-icon>
-      </ion-item>
       <ion-item-divider>
       </ion-item-divider>
       <ion-card>
@@ -84,8 +74,24 @@
 </ion-content>
 
 <div class="btn-addcart">
-  <ion-button expand="block" slot="start" (click)="test()">AGREGAR A LA BOLSA</ion-button>
-
+  a
+  
+</div>
+<div class="btn-addcart">
+  <ion-row>
+    <ion-col size="5" class="quantity">
+      <div class="quantity">
+        <a (click)="decrement()" class="quantity__minus"><span>-</span></a>
+        <input name="quantity" type="number" class="quantity__input" value="{{currentNumber}}">
+        <a  (click)="increment()" class="quantity__plus"><span>+</span></a>
+      </div>
+    </ion-col>
+    <ion-col size="7" class="btn-cont">
+      <ion-button expand="block" (click)="addData()">
+        Agregar a la bolsa
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </div>
 
 <ion-menu side="start" menuId="custom" contentId="main-content" class="my-custom-menu" swipeGesture="false">

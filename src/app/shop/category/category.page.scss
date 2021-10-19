@@ -24,15 +24,19 @@ ion-header{
     }
   }
 ion-col{
-    padding-inline-start:0px;
-    padding-inline-end:0px;
+    padding-inline-start:0.6px;
+    padding-inline-end:0.6px;
     padding-top:0px;
     padding-bottom:0px;
-
+    
     ion-card{
         margin: 0px;
         margin-inline:0px!important;
-        box-shadow: rgb(0 0 0 / 20%) 0px 1px 1px -9px, rgb(0 0 0 / 5%) 0px 0px 0px 0px, rgb(0 0 0 / 5%) 0px 0px 0px 0px;
+        border: #dadadada solid 0.5px;
+        border-bottom: none;
+        border-top: none;
+        border-right: none;
+        box-shadow: rgb(0 0 0 / 20%) 0px 0px 0px -9px, rgb(0 0 0 / 10%) 0px 1px 0px -9px, rgb(0 0 0 / 10%) 0px 0px 0px -9px;
         border-radius: 0px;
         .nodataimg{
             width: 65%;
@@ -55,12 +59,21 @@ ion-col{
         }
         .badgeEtiqueta{
             z-index: 1;
+            top: 5px;
             position: absolute;
             padding: 7px;
+            font-size: 10px;
             border-radius: 0px;
-            font-weight: 300;
             --background:#c2c2c2;
             
+        }
+        .dcto{
+            z-index: 1;
+            position: absolute;
+            padding: 7px;
+            top: 29px;
+            font-size: 10px;
+            border-radius: 0px;
         }
         .pocas{
             --background:#d34350!important;
@@ -79,11 +92,15 @@ ion-col{
             h5{
                 color: #5e5e5e !important;
                 margin-bottom: 8px;
+                font-size: 12px;
             }
         }
         .prices{
             .p1{
                 text-decoration: line-through;
+                color: #5e5e5e !important;
+                font-size: 12px!important;
+
             }
             .p2{
 
@@ -95,6 +112,9 @@ ion-col{
                 font-size: 17px;
             }
             .dcto{
+                z-index: 1;
+                position: absolute;
+                padding: 7px;
                 border-radius: 0px;
             }
         }

@@ -21,7 +21,7 @@
       <ion-img  class="promoimg" [src]="'https://tuhogaronline.com/backTHO/img/promo/'+prod.superpromo+'.png'" alt="{{prod.img[0].title}}" *ngIf="prod.superpromo > 0"></ion-img>
       <ion-card-content>
         <ion-text class="nameprod">
-          <h5>{{catemd.shortname(prod.name)}}</h5>
+          <h5>{{catemd.shortname(prod.name)}}...</h5>
         </ion-text>
         <ion-text color="dark" class="prices">
           <h5 class="promoPrice" >Ahora {{prod.price2 | currency:'COP':'symbol-narrow':'3.0'}}

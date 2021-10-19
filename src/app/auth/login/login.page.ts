@@ -14,8 +14,13 @@ export class LoginPage implements OnInit {
   loginForm:FormGroup
   submitted=false;
 
-  constructor(private router:Router,private auth:AuthService,public toastController: ToastController,private formBuilder:FormBuilder,private route:ActivatedRoute) {
-   }
+  constructor(private router:Router,
+    private auth:AuthService,
+    public toastController: ToastController,
+    private formBuilder:FormBuilder,
+    private route:ActivatedRoute) {
+   
+  }
 
  ngOnInit() {
     this.loginForm= this.formBuilder.group(
@@ -62,6 +67,10 @@ export class LoginPage implements OnInit {
     this.submitted=false;
     this.loginForm.reset();
   }
+  back(){
+    this.router.navigate([this.route.snapshot.params.ruta]);
+  }
+
   
  
 

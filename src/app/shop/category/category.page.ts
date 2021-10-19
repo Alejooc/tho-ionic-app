@@ -43,7 +43,6 @@ export class CategoryPage implements OnInit {
   loadData(event) {
     setTimeout(() => {
       this.rest.getProductsCategory('[]',this.slug,undefined,this.pagina,undefined,"",undefined,"").subscribe(resp=>{
-        console.log(resp);
         for (const i of resp.prods) {
           this.products.push(i);
         }
@@ -135,7 +134,7 @@ export class CategoryPage implements OnInit {
       return Math.trunc(dcto);
     }
   }
-  shortname(name){
+  shortname(name){    
     let shortname = name.substr(0,21)    
     return shortname.toLowerCase()
     .trim()

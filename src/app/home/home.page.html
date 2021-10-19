@@ -14,22 +14,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-
-    </ion-toolbar>
-  </ion-header>
 
   <app-sliderimg [banners]="bannersData"></app-sliderimg>
+
   
   <ion-grid>
+    <ng-template [ngIf]="!login">
+      <app-loginregister ></app-loginregister>
+    </ng-template>
     <ion-col *ngFor="let home of home2">
       <ng-template [ngIf]="home.type == 1">
         <app-unaimg [imgdata]="home.detail"></app-unaimg>
       </ng-template>
       <ng-template [ngIf]="home.type == 3">
-       <app-cuatroimg ></app-cuatroimg>
+       <app-cuatroimg [images]="home.detail"></app-cuatroimg>
       </ng-template>
       <ng-template [ngIf]="home.type == 5">
         <app-dobleimg [dosimages]="home.detail"></app-dobleimg>

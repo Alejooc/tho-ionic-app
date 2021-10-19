@@ -22,7 +22,7 @@ export class PromoPage implements OnInit {
   ];
   slideOpts = {
     initialSlide: 1,
-    slidesPerView:2.0,
+    slidesPerView:2.4,
     spaceBetween: 4,
     speed: 400,
     loop: true,
@@ -190,12 +190,19 @@ export class PromoPage implements OnInit {
     }
   }
   shortname(name){
-    let shortname = name.substr(0,21)    
-    return shortname.toLowerCase()
-    .trim()
-    .split(' ')
-    .map( v => v[0].toUpperCase() + v.substr(1) )
-    .join(' ');
+    let shortname = name.substr(0,21)  
+   
+    try {
+      return shortname.toLowerCase()
+        .trim()
+        .split(' ')
+        .map( v => v[0].toUpperCase() + v.substr(1) )
+        .join(' ');
+    } catch (error) {
+      console.log(error);
+      
+    }
+    
   }
 
   goToProduct(slug){

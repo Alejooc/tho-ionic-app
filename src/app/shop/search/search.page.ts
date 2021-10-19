@@ -12,6 +12,7 @@ export class SearchPage implements OnInit {
   searchForm:FormGroup
   resultDataP=[];
   resultDataC=[];
+  busqueda:boolean=false;
   constructor(private rest :RestService,
     private formBuilder:FormBuilder,
     private router:Router,
@@ -32,8 +33,8 @@ export class SearchPage implements OnInit {
         console.log(resp);
         this.resultDataC=resp.cat;
         this.resultDataP=resp.prod;
+        this.busqueda=true;
       })
-      console.log(x)
     });
     
   }
@@ -47,5 +48,13 @@ export class SearchPage implements OnInit {
 
   onReset(){
     
+  }
+  shortname(name){    
+        
+    return name.toLowerCase()
+    .trim()
+    .split(' ')
+    .map( v => v[0].toUpperCase() + v.substr(1) )
+    .join(' ');
   }
 }

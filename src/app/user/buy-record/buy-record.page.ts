@@ -34,6 +34,9 @@ export class BuyRecordPage implements OnInit {
       this.rest.getUserData("0",info.id,5).subscribe(async resp=>{
         for (const i of resp.body) {          
           i.extra = this.getExtradataPruchases(i.id);
+          i.shipmentTracking = {
+            status:'Entregado'
+          }
         }
         this.data = resp.body;  
         console.log(resp.body);

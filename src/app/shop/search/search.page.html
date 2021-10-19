@@ -7,24 +7,32 @@
       
     </ion-buttons>
     <form  [formGroup]="searchForm">
-        <ion-input inputmode="search" autofocus="true" placeholder="Buscar en TuhogarOnline..." formControlName="txt"></ion-input>
+        <ion-input inputmode="search" clearInput autofocus="true" placeholder="Buscar en TuhogarOnline..." formControlName="txt"></ion-input>
     </form>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
-  <ion-card >
-    Categorias
-    <ion-card *ngFor="let data of resultDataC" [routerLink]="['/tienda/category',data.slug]" >
-      {{data.name}}
+  <ng-template [ngIf]="busqueda">
+    <ion-card *ngIf="resultDataC.length">
+      <h5>Categorias</h5>
+      <ion-card *ngFor="let data of resultDataC" [routerLink]="['/tienda/category',data.slug]" >
+        {{data.name}}
+      </ion-card>
     </ion-card>
-  </ion-card>
-  <ion-card >
-    Productos
-    <ion-card *ngFor="let data of resultDataP" [routerLink]="['/tienda/producto',data.slug]">
-      {{data.name}}
+    <ion-card *ngIf="resultDataP">
+      <h5>Productos</h5> 
+      <ion-card *ngFor="let data of resultDataP" [routerLink]="['/tienda/producto',data.slug]">
+        {{shortname(data.name)}}
+      </ion-card>
+     
+    </ion-card>
+  </ng-template> 
+  <ng-template [ngIf]="!busqueda">
+    <ion-card >
+      <ion-img class="search" [src]="'/assets/images/search.svg'"></ion-img>
+       <h5 class="text-nodata">Buscador...</h5>
     </ion-card>
    
-  </ion-card>
+  </ng-template> 
 </ion-content>

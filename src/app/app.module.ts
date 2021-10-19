@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { AnalyticsFirebase } from '@ionic-native/analytics-firebase/ngx';
 
 import { Storage } from "@ionic/storage-angular";
 
@@ -19,7 +20,7 @@ import { Storage } from "@ionic/storage-angular";
   IonicStorageModule.forRoot({
     name:"mydb"
   })],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },StatusBar,Storage,Deeplinks],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },StatusBar,Storage,Deeplinks,AnalyticsFirebase],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
