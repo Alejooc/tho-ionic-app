@@ -29,8 +29,12 @@ ThoAPP Es una Aplicacion hibrida, combina elementos de aplicaciones nativas y ap
 - Login - ✔️100%
 - Registro usuarios-❌  0%
 - Recuperar contraseña -❌  0%
-
-Se integraran modulos Chat Soporte, Estado de envios (en desarrollo).
+- Storage Persistente ✔️ 100% 
+- firebase Google Analitycs ✔️ - 100%
+- Local Notification - ✔️ 100%
+- DeepLinks - ✔️ 100%
+- Chat Soporte - ❌ 0%
+ 
 
 ## Tecnologías
 
